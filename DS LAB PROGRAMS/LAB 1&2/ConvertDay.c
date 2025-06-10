@@ -11,5 +11,5 @@ void main(){
     int week = (days/7);
     days = (days%7);
 
-    printf(" is = %d : %d : %d",year,week,days);
+    printf("year , week and day is = %d : %d : %d",year,week,days);
 }
