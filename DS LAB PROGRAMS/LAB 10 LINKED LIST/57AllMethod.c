@@ -116,3 +116,7 @@ int countNode(){
         return count;
     }
 }
+
+void main(){
+    //code
+}
