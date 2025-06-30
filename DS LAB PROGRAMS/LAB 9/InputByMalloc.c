@@ -2,9 +2,9 @@
 #include <stdlib.h>
 
 void main(){
-    int* a = (int*)malloc(sizeof(a));
-    char* c = (char*)malloc(sizeof(c));
-    float* f = (float*)malloc(sizeof(f));
+    int* a = (int*)malloc(sizeof(int));
+    char* c = (char*)malloc(sizeof(char));
+    float* f = (float*)malloc(sizeof(float));
 
     if(a&&c&&f){
         *a=9;

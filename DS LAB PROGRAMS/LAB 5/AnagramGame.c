@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h> // Required for rand() and srand()
+#include <stdlib.h> 
 #include <time.h>  
 #include <string.h> 
 

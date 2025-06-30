@@ -15,18 +15,18 @@ void main(){
     printf("duplicate = ");
     for(int i=0 ; i<n ; i++){
         for(int j=(i+1) ; j<n ;j++){
-            else if(arr[i]==arr[j]){
+            if(arr[i]==arr[j]){
                 printf("%d ,",arr[i]);
                 break;
             }
         }
     }
 
-    printf("\nnot duplicate = ");
+    printf("\nno duplicate = ");
     for(int i=0 ; i<n ; i++){
         count =0;
         for(int j=0 ; j<n ;j++){
-            else if(arr[i]==arr[j]){
+            if(arr[i]==arr[j]){
                 count++;
                 break;
             }

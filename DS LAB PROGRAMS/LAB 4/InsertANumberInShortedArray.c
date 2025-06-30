@@ -13,9 +13,26 @@ void main(){
         scanf("%d",&array[i]);
     }
 
-    int newElement , indexOfNew;
+    int newElement ;
     printf("Enter a element who you insert : ");
     scanf("%d",&newElement);
+
+    /*
+    array[n+1];
+    int count=0;
+    for(int i=0 ;i<=n ;){
+        if(array[i]==newElement){
+            array[i+1]=newElement;
+            i+=2;
+        }
+        if(array[i]>newElement){
+            
+        }
+        else{
+            i++;
+        }
+    }
+    */
 
     int newArray[n+1];
     for(int i=0 ; i<n+1 ;i++){

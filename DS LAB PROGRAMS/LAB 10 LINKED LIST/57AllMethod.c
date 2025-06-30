@@ -59,7 +59,7 @@ void INSORD(){
         while((save->link!=NULL)&&(newNode->info>=save->link->info)){
             save=save->link;
         }
-        newNode->link=save;
+        newNode->link=save->link;
         save->link=newNode;
     }
 }
