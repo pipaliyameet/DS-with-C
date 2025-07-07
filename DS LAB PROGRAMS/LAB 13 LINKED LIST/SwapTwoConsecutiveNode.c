@@ -26,19 +26,22 @@ void swapTwoConsecutiveNode(struct node *first){
         struct node *temp=first->link;
         struct node *pred;
         first=first->link;
+        int c=0;
         while(temp->link!=NULL){
             save->link=temp->link;
             temp->link=save;
             pred=save;
             save=save->link;
+            if(save->link==NULL){
+                break;
+            }
             temp=save->link;
             pred->link=temp;
         }
-        save->link=NULL;
-        temp->link=save;
-        // pred->link=temp;
-        display(first);
-    
+            save->link=NULL;
+            temp->link=save;
+            // pred->link=temp;
+           display(first);
 }
 
 struct node * insertAtLast(struct node *first){
@@ -50,11 +53,6 @@ struct node * insertAtLast(struct node *first){
         first =newNode;
         return first;
     }
-    // else if(first->link=NULL){
-    //     first->link=newNode;
-    //     newNode->link=NULL;
-    //     return 0;
-    // }
     else{
         struct node *save=first;
         while(save->link!=NULL){
@@ -65,6 +63,38 @@ struct node * insertAtLast(struct node *first){
         return 0;
     }
 }
+
+struct node* swapPairs(struct node* head) {
+    if(head==NULL || head->link==NULL){
+        return head;
+    }
+    else{
+        struct node *save=head;
+        struct node *temp=head->link;
+        struct node *pred;
+        head=head->link;
+        while(temp->link != NULL){
+            save->link=temp->link;
+            temp->link=save;
+            pred=save;
+            save=save->link;
+            if(save->link !=NULL){
+                temp=save->link;
+                pred->link=temp;
+            }
+            if(temp->link == NULL){
+                save->link=NULL;
+                temp->link=save;
+            }
+            else{
+                break;
+            }
+        }
+        display(head);
+        return head;
+    }
+}
+
 void main(){
     struct node *first=NULL;
     int x ,count=0;
@@ -93,7 +123,6 @@ void main(){
 
     // fourth1->info=7;
     // fourth1->link=NULL;
-    display(first);
-    swapTwoConsecutiveNode(first);
+    swapPairs(first);
     printf("heyy");
 }

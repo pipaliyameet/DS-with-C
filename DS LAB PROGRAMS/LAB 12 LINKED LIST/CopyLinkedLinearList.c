@@ -30,7 +30,7 @@ int copyLinkedList(struct node1 *first){
             newNode->ptr=pred;
         }
         newNode->ptr=NULL;
-        return (begin);
+        return 1;
     }
 }
 
