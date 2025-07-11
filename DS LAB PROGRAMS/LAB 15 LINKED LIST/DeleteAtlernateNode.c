@@ -15,78 +15,83 @@ void display(struct node *l){
     }
 }
 
+struct node * insertAtLast(struct node *l){
+    int x ,count=1;
+    printf("Num of node : ");
+    scanf("%d",&x);
+
+    struct node *first = (struct node*)malloc(sizeof(struct node));
+    printf("Enter a value = ");
+    scanf("%d",&first->info);
+    first->rptr=NULL;
+    l=first;
+    
+    struct node *save =first;
+    while(count!=x){
+        struct node *newNode = (struct node*)malloc(sizeof(struct node));
+        printf("Enter a value = ");
+        scanf("%d",&newNode->info);
+        newNode->rptr=NULL;
+        save->rptr=newNode;
+        newNode->lptr=save;
+        save=newNode;
+        // save=save->rptr;
+        count++;
+    }
+    save->rptr=NULL;
+    return l;
+}
+void deleteOrder(struct node *s){
+    if(s==NULL){
+        printf("Your linked list is emty");
+    }else{
+        struct node *t=s;
+        if(t->lptr==NULL){
+            struct node *t2=s->rptr;
+            t2->lptr=NULL;
+            t->rptr=NULL;
+            free(t);
+        }else{
+            t->lptr->rptr=t->rptr;
+            t->rptr->lptr=t->lptr;
+            t->lptr=NULL;
+            t->rptr=NULL;
+            free(t);
+        }
+    }
+}
 void deletAlternateNode(struct node *l ,int x){
     if(l==NULL){
         printf("Your linked list is empty");
     }
     else{
         struct node *save=l;
-        int n=0 ,m=-1 ,i=1;
         if((x%2)==0){
-            n=1;
+            save = l->rptr;
         }else{
-            m=0;
             l=l->rptr;
         }
+
         while(save!=NULL){
-            if(i==(2*n)){
-                struct node *temp=save;
-                save = save->rptr;
-                temp->lptr->rptr=temp->rptr;
-                temp->rptr->lptr=temp->lptr;
-                free(temp);
-                n++;
+            if(save->rptr==NULL){
+                save->lptr->rptr=NULL;
+                free(save);
+                break;
             }
-            if(i==(m+1)){
-                struct node *temp=save;
-                save = save->rptr;
-                if(i!=1){
-                    temp->lptr->rptr=temp->rptr;
-                }
-                temp->rptr->lptr=temp->lptr;
-                free(temp);
-                m+=2;
-            }
-            else{
-                save=save->rptr;
-            }
-            i++;
+            struct node *temp =save;
+            save=save->rptr->rptr;
+            deleteOrder(temp);
         }
         display(l);
     }
 }
 
 void main(){
-    struct node *first ,*second ,*third ,*fourth ,*fifth;
-    first = (struct node*)malloc(sizeof(struct node));
-    second = (struct node*)malloc(sizeof(struct node));
-    third = (struct node*)malloc(sizeof(struct node));
-    fourth = (struct node*)malloc(sizeof(struct node));
-    fifth = (struct node*)malloc(sizeof(struct node));
-
-    first->info=1;
-    first->lptr=NULL;
-    first->rptr=second;
-
-    second->info=2;
-    second->lptr=first;
-    second->rptr=third;
-
-    third->info=3;
-    third->lptr=second;
-    third->rptr=fourth;
-
-    fourth->info=4;
-    fourth->lptr=third;
-    fourth->rptr=fifth;
-
-    fifth->info=5;
-    fifth->lptr=fourth;
-    fifth->rptr=NULL;
-
-    display(first);
+    struct node *l =NULL;
+    l=insertAtLast(l);
+    display(l);
     int temp;
     printf("If you delete odd seqence so enter odd number or If you delete even seqence so enter even number : ");
     scanf("%d",&temp);
-    deletAlternateNode(first ,temp);
+    deletAlternateNode(l ,temp);
 }
