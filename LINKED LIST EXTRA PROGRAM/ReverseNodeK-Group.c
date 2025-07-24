@@ -46,7 +46,6 @@ void reversNodeKGroup(struct node *first ,int k){
         while(save->link!=NULL){
             if(count==k){
                 save = save->link;
-                final->link=save;
                 count=0;
                 struct node *next=first->link;
                 struct node *current=NULL;
@@ -67,13 +66,14 @@ void reversNodeKGroup(struct node *first ,int k){
                     pred=current;
                     count++;
                 }
+                final->link=save;
                 first=current;
-                display(first);
                 break;
             }
             save=save->link;
             count++;
         }
+        display(first);
     }
 }
 void main(){
@@ -81,6 +81,8 @@ void main(){
     struct node *save=makeALinkedList(first);
     printf("heyy");
     display(save);
+    display(save);
+
     int k;
     printf("Enter a k : ");
     scanf("%d",&k);
