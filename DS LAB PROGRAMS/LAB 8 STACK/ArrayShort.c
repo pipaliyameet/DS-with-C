@@ -22,7 +22,7 @@ void main(){
             j++;
         }else{
             i++;
-            j=i;
+            j=i+1;
         }
     }
 
