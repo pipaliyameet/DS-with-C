@@ -14,7 +14,7 @@ void main(){
 
     while(i<a){
         if(j<a){
-            if(arr[i]<arr[j]){
+            if(arr[i]>arr[j]){
                 int temp=arr[i];
                 arr[i]=arr[j];
                 arr[j]=temp;
@@ -22,7 +22,7 @@ void main(){
             j++;
         }else{
             i++;
-            j=0;
+            j=i;
         }
     }
 
